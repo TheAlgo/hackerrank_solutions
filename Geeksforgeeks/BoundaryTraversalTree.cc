@@ -10,8 +10,6 @@ struct node {
 	int data; 
 	struct node *left, *right; 
 }; 
-
-// A simple function to print leaf nodes of a binary tree 
 void printLeaves(struct node* root) 
 { 
 	if (root) { 
