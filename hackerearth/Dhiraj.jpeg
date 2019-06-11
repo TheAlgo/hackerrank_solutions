@@ -1,0 +1,46 @@
+#include<bits/stdc++.h>
+#define ll long long int
+using namespace std;
+ll dp[2005][2005][8];
+ll m,n,k;
+ll klcs(ll arr1[],ll arr2[],ll i,ll j,ll k)
+{
+	if(i==m||j==n)
+	return 0;
+	
+	if(dp[i][j][k]!=-1)
+	return dp[i][j][k];
+	
+	ll res=0;
+	
+	if(arr1[i]==arr2[j])
+	res=1+klcs(arr1,arr2,i+1,j+1,k);
+	
+	
+	else
+	{
+		if(k>0)
+		{
+			res=1+klcs(arr1,arr2,i+1,j+1,k-1);
+		}
+		res=max(res,klcs(arr1,arr2,i+1,j,k));
+		res=max(res,klcs(arr1,arr2,i,j+1,k));
+	}
+	return dp[i][j][k]=res;
+}
+int main()
+{
+	
+	cin>>m>>n>>k;
+	ll arr1[m],arr2[n];
+	for(ll i=0;i<m;i++)
+	cin>>arr1[i];
+	for(ll j=0;j<n;j++)
+	cin>>arr2[j];
+	memset(dp,-1,sizeof(dp));
+	cout<<klcs(arr1,arr2,0,0,k)<<endl;
+	
+	
+	
+	return 0;
+}
