@@ -7,7 +7,6 @@ int main()
 	int n,d,index=0;
 	cin>>n>>d;
 	vector<int> arr (n);
-	vector<int> arr1 (n);
 	for(int i=0;i<n;i++)
 	{
 		index=i-d;
